@@ -1,0 +1,65 @@
+<div class="container">	
+	<div class="row" style="text-align: center">
+		<%= link_to 'New Content', new_content_path %>
+		&nbsp;|&nbsp;
+		<%= link_to 'Edit Categories', categories_path %>
+	</div>
+	<div class="row" style="text-align: center">
+		<strong>Filter category:&nbsp;</strong>
+		<%= link_to 'All', contents_path %>&nbsp;
+		<% @categories.each do |category| %>
+			<%= link_to category.text, "#{contents_path}?category_id=#{category.id}" %>&nbsp;
+		<% end %>
+	</div>
+	<% totalContents = 0 %>
+	<% @contents.each do |content| %>
+		<div 
+			class="row" 
+			style="						
+				margin-top: 8px;
+				text-align: left				
+			"
+		>			
+			<div class="col-md-12" style="padding: 0px; text-align: right"><%= link_to 'Edit', edit_content_path(content) %>&nbsp;|&nbsp;<%= link_to 'Delete', content_path(content), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+			<div 
+				class="col-md-12" 
+				style="
+					background-color: #ccc;
+					padding: 5px
+				"
+			>
+				<span style="font-weight: bolder"><%= content.title %></span>
+				<br/>
+				<span><%= content.subtitle %></span>
+				<br/><br/>
+				<strong>Category:&nbsp;</strong>
+				<% @categories.each do |category| %>
+					<% if category.id == content.category_id %>
+						<%= category.text %>
+						<% break %>
+					<% end %>
+				<% end %>
+			</div>			
+			<div 
+				class="col-md-12" 
+				style="
+					border: 1px solid #ccc;
+					padding: 5px
+				"
+			><%= content.text %></div>
+		</div>
+	<% 	totalContents += 1 %>
+	<% end %>
+	<% if totalContents == 0 %>
+		<div 
+			class="row" 
+			style="
+				background-color: #ccc;
+				margin-top: 8px;
+				padding: 5px
+			"
+		>
+			<div class="col-md-12">No content found.</div>
+		</div>
+	<% end %>
+</div>

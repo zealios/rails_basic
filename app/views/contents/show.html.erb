@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row" style="text-align: center">
+		<%= link_to 'Back', contents_path %>
+	</div>
+	<div 
+		class="row" 
+		style="						
+			margin-top: 8px;
+			text-align: left				
+		"
+	>		
+		<div 
+			class="col-md-12" 
+			style="
+				background-color: #ccc;
+				padding: 5px				
+			"
+		>
+			<span style="font-weight: bolder"><%= @content.title %></span>
+			<br/>
+			<span><%= @content.subtitle %></span>
+			<br/><br/>
+			<strong>Category:&nbsp;</strong>
+			<% @categories.each do |category| %>
+				<% if category.id == @content.category_id %>
+					<%= category.text %>
+					<% break %>
+				<% end %>
+			<% end %>
+		</div>			
+		<div 
+			class="col-md-12" 
+			style="
+				border: 1px solid #ccc;
+				padding: 5px
+			"
+		><%= @content.text %></div>
+	</div>	
+</div>

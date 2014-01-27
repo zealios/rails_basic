@@ -1,0 +1,56 @@
+<div class="container">	
+	<div class="row" style="text-align: center">
+		<%= link_to 'Back to Contents', contents_path %>
+		&nbsp;|&nbsp;
+		<%= link_to 'New Category', new_category_path %>
+	</div>
+	<% totalCategories = 0 %>
+	<% @categories.each do |category| %>
+		<% next if category.id == 1 %>
+		<% if totalCategories == 0 %>
+			<style>
+				table {
+					display: inline-block;
+				}
+
+				table th, table td {
+					border: 1px solid #ccc;
+					padding: 5px;
+					text-align: left;
+				}
+			</style>
+			<div class="row" style="margin-top: 8px">
+				<table>
+					<tr>
+						<th>ID</th>
+						<th>Text</th>
+						<th>Action</th>
+					</tr>
+		<% end %>
+		<tr>
+			<td><%= category.id %></td>
+			<td><%= category.text %></td>
+			<td>
+				<%= link_to 'Edit', edit_category_path(category) %>
+				&nbsp;|&nbsp;
+				<%= link_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		</tr>
+	<% 	totalCategories += 1 %>
+	<% end %>
+	<% if totalCategories == 0 %>
+		<div 
+			class="row" 
+			style="
+				background-color: #ccc;
+				margin-top: 8px;
+				padding: 5px
+			"
+		>
+			<div class="col-md-12">No category found.</div>
+		</div>
+	<% else %>
+			</table>
+		</div>
+	<% end %>
+</div>

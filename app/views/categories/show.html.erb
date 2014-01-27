@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row" style="text-align: center">
+		<%= link_to 'Back', categories_path %>
+	</div>
+	<div 
+		class="row" 
+		style="margin-top: 8px"
+	>
+		<style>
+			table {
+				display: inline-block;
+			}
+
+			table th, table td {
+				border: 1px solid #ccc;
+				padding: 5px;
+				text-align: left;
+			}
+		</style>		
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Text</th>
+			</tr>
+			<tr>
+				<td><%= @category.id %></td>
+				<td><%= @category.text %></td>
+			</tr>
+	</div>	
+</div>

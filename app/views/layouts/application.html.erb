@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iskandar Malaysia - Rails Training</title>
+  <!-- JQuery Component -->
+  <script src="/libraries/jquery/jquery-2.0.3.min.js"></script>
+  <!-- End -->
+  <!-- Twitter Bootstrap Component -->
+  <link rel="stylesheet" href="/libraries/bootstrap-3.0.3/css/bootstrap.min.css">
+  <script src="/libraries/bootstrap-3.0.3/js/bootstrap.min.js"></script>
+  <!-- End -->
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="contents">
+		<div class="container">
+			<div class="row">
+				<h1>Iskandar Malaysia</h1>
+			</div>
+			<div class="row">
+				<h4>Rails Training</h4>
+			</div>
+			<div class="row">
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
